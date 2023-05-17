@@ -1,48 +1,46 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Neural Network Mini-hackathon Fashion MNIST 👗👔
+# Neural Network Mini-hackathon Fashion MNIST 👗👔
 
-## Goal
+## Overview
 
-Create the highest scoring model to classify clothing images! 
+The Fashion-MNIST dataset is a collection of images of clothing items. It was created as a replacement for the original MNIST dataset, which has become too easy for modern machine learning algorithms. The goal of this project is to develop a machine learning model that can accurately classify these images into their corresponding categories. The project involves various steps such as preprocessing the data, building and training the model, and evaluating its performance.
 
-## Instructions
+## Problem Statement
 
-Working rogether in your group, prepare your data, create and train your model, and evaluate it. The training data is [fashion-mnist_train.csv](https://www.kaggle.com/zalando-research/fashionmnist?select=fashion-mnist_train.csv).
+Can a Convolutional Neural Network (CNN) be used to classify images of clothing items into their respective categories?
 
-- Use Tensorflow Keras.
-- Try to use a GPU Accelerator to speed up your training! 🚀
-- There are lots of model architectures and hyperparameters you can tune. See what gives you the best validation score.
+## Data
 
-Then create predictions for the [test set](https://www.kaggle.com/zalando-research/fashionmnist?select=fashion-mnist_test.csv). The predictions should be numbers in the range 0-9. DROP THE LABEL COLUMN FIRST! ⚠
+The dataset consists of 70,000 images, with 60,000 images for training and 10,000 images for testing. Each image is 28x28 pixels in size and is represented as a flattened array of 784 values. The 10 categories of clothing items in the dataset are:
 
-- Do NOT use other people's Kaggle Kernels.
+- T-shirt/top
+- Trouser
+- Pullover
+- Dress
+- Coat
+- Sandal
+- Shirt
+- Sneaker
+- Bag
+- Ankle boot
 
-- Hint: create a simple model that trains fast before training more complicated models.
+The dataset can be downloaded from [Kaggle](https://www.kaggle.com/datasets/zalando-research/fashionmnist?select=fashion-mnist_train.csv).
 
-- Feel free to create a confusion matrix to see how your model performs on different articles of clothing.
+## Methodology
 
-- If you have time, you might want to try CNNs, data augmentation, and/or transfer learning to make a better model.
+Data Preparation: The dataset was loaded and split into training and validation sets. The pixel values were MinMax scaled to improve the performance of the model.
 
-- Your deliverables include a repository of your work, as well as a README. You will also give a lightning presentation outlining your group's process/ conclusions/ difficulties.
+Model Building: A convolutional neural network (CNN) was built using Keras. The CNN consists of two convolutional layers(64 and 128 nodes), followed by two pooling layers, and two fully connected layers.
 
-### Lightning presentations
+Model Training: The model was trained on the training set using the RMSProp optimizer and sparse categorical cross entropy loss function. The model was trained for 10 epochs with a batch size of 128.
 
-Right after lunch we'll reconvene and your group will do a brief walk-through with a slide deck of your best model. Assume the audience here is your classmates and instructors.
-    
-### Roles
+Model Evaluation: The model was evaluated on the testing set, and the accuracy was calculated.
 
-- As always, one person should share their screen so the group can work together (everyone should work on their own notebook, too). If you don't usually share your screen, today is a good day to do so. 
-- We should hear from each group member during the presentation.
+Model Improvement: The model was further improved by adding more convolutional layers and increasing the number of filters in each layer. The model was trained and evaluated again on the entire training set to compare the performance with the previous version.
 
-### The dataset
-From Kaggle:
+Final Model Selection: The best-performing model was selected based on the evaluation metrics.
 
-> Fashion-MNIST is a dataset of Zalando's article images—consisting of a training set of 60,000 examples and a test set of 10,000 examples. Each example is a 28x28 grayscale image, associated with a label from 10 classes. Zalando intends Fashion-MNIST to serve as a direct drop-in replacement for the original MNIST dataset for benchmarking machine learning algorithms. It shares the same image size and structure of training and testing splits.
+## Conclusion
 
-> The original MNIST dataset contains a lot of handwritten digits. Members of the AI/ML/Data Science community love this dataset and use it as a benchmark to validate their algorithms. In fact, MNIST is often the first dataset researchers try. "If it doesn't work on MNIST, it won't work at all", they said. "Well, if it does work on MNIST, it may still fail on others."
+The results of this project demonstrate that the model performed with 92% accuracy. This accuracy score indicates that the model was very successful in correctly classifying the images into their respective categories. Many of the labels that were misclassified by the model would also be misclassified by the human eye. This suggests that the model was able to learn the features of the images accurately. This project demonstrates the efficacy of using CNNs and Tensorflow to classify images into their respective categories with a high degree of accuracy.
 
-Fashion-MNIST dataset on Kaggle: https://www.kaggle.com/zalando-research/fashionmnist
-
-
-## Have fun and good luck! 🚀
-
-Created by Jeff Hale (DC), adapted from Caroline Schmitt (ATL).
+![validation-loss](validation-loss.png)
